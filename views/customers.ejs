@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--links-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- jQuery and JS bundle w/ Popper.js -->
+
+  <script src="https://kit.fontawesome.com/b4aee49aa2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- external ccs link -->
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <!-- Nav Bar -->
+
+  <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/">SF BANK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/customers">CUSTOMERS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transactionlist">TRANSFER LIST</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- table of customers -->
+
+  <div class="container centertable">
+    <h2 style="font-weight:bold;text-align:center;">Customer Details</h2>
+
+      <% if(details!=null) { %>
+      <table class="styled-table" align="center">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Account No</th>
+            <th>Balance</th>
+            <th>Transfer Funds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% details.forEach(function(item){ %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.email %></td>
+            <td><%= item.accountno %></td>
+            <td><%= item.balance %></td>
+            <!-- <td><a href="/" style="text-decoration:none;text-align:center;" name="<%= item.name %>" >👉</a></td> -->
+            <td><button class="correct" type="button" name="<%=item.name%>" style="background:none;border:none;">👉</button></td>
+
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+
+
+  <!-- tranfer form -->
+
+  <div class="div">
+    <h2 class="formname" style="text-align:center;font-weight:bold;"></h2>
+  <form action="/customers" method="post">
+    <label for="fname">Sender</label>
+    <input type="text" id="fname" name="sender" placeholder="Your name.." readonly>
+
+    <label for="lname">Reciever</label>
+    <input type="text" id="lname" name="reciever" placeholder="Enter Reciever Name ...">
+
+    <label for="amount">Enter Amount</label>
+    <input type="number" id="amount" name="amount" placeholder="Enter the Amount">
+
+    <input type="submit" value="Transfer">
+  </form>
+</div>
+
+
+
+<!-- script -->
+
+<script src="javascript/main.js" charset="utf-8"></script>
+
+
+
+</body>
+
+</html>
